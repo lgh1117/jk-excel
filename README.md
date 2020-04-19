@@ -10,19 +10,19 @@
 ##效果图例
 ###生成excel样式
 1.表头约束
-![约束限制](https://github.com/lgh1117/jk-excel/tree/master/static/constract.png)
+![约束限制](https://github.com/lgh1117/jk-excel/blob/master/static/constract.png)
 
 2.表头有特定格式输出
-![format](https://github.com/lgh1117/jk-excel/tree/master/static/format.png)
+![format](https://github.com/lgh1117/jk-excel/blob/master/static/format.png)
 
 3.复杂表头
-![mult](https://github.com/lgh1117/jk-excel/tree/master/static/mutl-header.png)
+![mult](https://github.com/lgh1117/jk-excel/blob/master/static/mutl-header.png)
 
 4.自定义文档说明
-![nav](https://github.com/lgh1117/jk-excel/tree/master/static/nav.png)
+![nav](https://github.com/lgh1117/jk-excel/blob/master/static/nav.png)
 
 5.根据模板生成新的excel
-![tpl1](https://github.com/lgh1117/jk-excel/tree/master/static/tpl1.png)
-![tpl1](https://github.com/lgh1117/jk-excel/tree/master/static/tpl2.png)
+![tpl1](https://github.com/lgh1117/jk-excel/blob/master/static/tpl1.png)
+![tpl1](https://github.com/lgh1117/jk-excel/blob/master/static/tpl2.png)
 
 ###文档还在更新中，具体例子可以先看demo里面的代码。。。。。
