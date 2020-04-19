@@ -7,7 +7,7 @@
 ##特性
    支持csv、tsv、excel所有版本
 
-##结果图例
+##效果图例
 ###生成excel样式
 1.表头约束
 ![约束限制](static/constract.png)
