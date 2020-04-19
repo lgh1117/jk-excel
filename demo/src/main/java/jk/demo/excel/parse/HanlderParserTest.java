@@ -16,6 +16,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
+ * 获取相关信息，以及行号
  * @Description
  * @Version 1.0.0
  * @Author Jack.Lee
@@ -24,6 +25,8 @@ public class HanlderParserTest extends BaseTest {
 
     public static void main(String[] args){
         File file = getFile("common_test.xlsx");
+        parse(file);
+        file = getFile("common_test.xls");
         parse(file);
     }
 

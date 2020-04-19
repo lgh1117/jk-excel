@@ -2,6 +2,7 @@ package jk.demo.csv;
 
 import jk.core.Excel;
 import jk.core.ParseFactory;
+import jk.core.csv.CsvConstants;
 import jk.core.excel.parse.base.Mapping;
 import jk.core.excel.parse.base.ParseInfo;
 import jk.demo.BaseTest;
@@ -13,6 +14,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
+ * 解析csv文件，文件不含表头数据
  * @Description
  * @Version 1.0.0
  * @Author Jack.Lee
@@ -20,8 +22,7 @@ import java.util.Map;
 public class CsvParserNoHeaderTest extends BaseTest {
 
     public static void main(String[] args){
-        File file = getFile("common_test_no_header.csv");
-//        File file = getFile("performance_detail_110000_A10001_201805.csv");
+        File file = getFile("common_test.csv");
         parse(file);
     }
 
@@ -29,7 +30,7 @@ public class CsvParserNoHeaderTest extends BaseTest {
         //配置文件，同时指定数据开始行号，从1开始
         ParseInfo info = new ParseInfo(file, 1);
         info.setCsvFirstIsHeader(true);
-        info.setCsvSeperator(",");
+        info.setCsvSeperator(CsvConstants.SEP_COMMA);
         info.setMappings(getMappings());
 
         //获取解析器
@@ -49,10 +50,6 @@ public class CsvParserNoHeaderTest extends BaseTest {
     public static List<Mapping> getMappings(){
         List<Mapping> list = new ArrayList<>();
         Mapping m = null;
-//        m =  new Mapping("year", "年",0);
-//        list.add(m);
-//        m = new Mapping("month", "月份",1);
-//        list.add(m);
         m = new Mapping("name", "姓名",2);
         list.add(m);
         m = new Mapping("age", "年龄",3);
@@ -62,28 +59,5 @@ public class CsvParserNoHeaderTest extends BaseTest {
         list.add(m);
 
         return  list;
-    }
-
-    public static List<Mapping> getPerMappings(){
-        List<Mapping> list = new ArrayList<>();
-        Mapping tradeNo = new Mapping("tradeNo","合同编号",2);
-        list.add(tradeNo);
-        Mapping perfType = new Mapping("perfType","业务类型",4);
-        list.add(perfType);
-        Mapping perfDate = new Mapping("perfDate","业务日期",8);
-        list.add(perfDate);
-        Mapping perfUserCode = new Mapping("perfUserCode","业绩归属人",11);
-        list.add(perfUserCode);
-        Mapping amount = new Mapping("amount","金额",13);
-        list.add(amount);
-        Mapping branchCode = new Mapping("branchCode","店组编码",14);
-        list.add(branchCode);
-        Mapping manager = new Mapping("manager","商圈经理工号",15);
-        list.add(manager);
-        Mapping areaCode = new Mapping("areaCode","区域编码",16);
-        list.add(areaCode);
-        Mapping areaManager = new Mapping("areaManager","区域经理工号",17);
-        list.add(areaManager);
-        return list;
     }
 }

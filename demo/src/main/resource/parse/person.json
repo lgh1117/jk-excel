@@ -1,0 +1,9 @@
+{
+"returnClass":"jk.demo.excel.parse.Person",
+"mapping":[
+	{"value":"年","key":"year"},
+	{"value":"月份","key":"month"},
+	{"value":"姓名","key":"name"},
+	{"value":"年龄","key":"age"}
+]
+}

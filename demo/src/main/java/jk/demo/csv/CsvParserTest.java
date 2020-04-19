@@ -2,6 +2,7 @@ package jk.demo.csv;
 
 import jk.core.Excel;
 import jk.core.ParseFactory;
+import jk.core.csv.CsvConstants;
 import jk.core.excel.parse.base.Header;
 import jk.core.excel.parse.base.Mapping;
 import jk.core.excel.parse.base.ParseInfo;
@@ -21,15 +22,17 @@ import java.util.Map;
 public class CsvParserTest extends BaseTest {
 
     public static void main(String[] args){
-        File file = getFile("common_test.tsv");
-//        parse(file);
-        testParseListener(file);
+        File file = getFile("common_test.csv");
+        parseListener(file);
+        System.out.println("listener parse end......");
+        parse(file);
+        System.out.println("commonn parse end......");
     }
 
-    public static void testParseListener(File file){
+    public static void parseListener(File file){
         //配置文件，同时指定数据开始行号，从1开始
         ParseInfo info = new ParseInfo(file, 1);
-        info.setCsvSeperator("t");
+        info.setCsvSeperator(CsvConstants.SEP_COMMA);
         info.setCsvFirstIsHeader(true);
         info.setMappings(getMappings());
         info.setParseListener(new TestParseListener());
@@ -43,11 +46,10 @@ public class CsvParserTest extends BaseTest {
     public static void parse(File file){
         //配置文件，同时指定数据开始行号，从1开始
         ParseInfo info = new ParseInfo(file, 1);
-        info.setCsvSeperator("t");
+        info.setCsvSeperator(CsvConstants.SEP_COMMA);
         info.setCsvFirstIsHeader(true);
         info.setMappings(getMappings());
-        //设置需要解析sheet名，不设置，默认为第一个sheet
-        info.addSheet("other");
+
         //获取解析器
         Excel excel = ParseFactory.getExcelParse(info);
         long l = System.currentTimeMillis();
@@ -80,6 +82,6 @@ class TestParseListener implements ParseListener {
 
     @Override
     public void rowOpration(String sheetName, int rowIndex, Map row, List<Header> headers, Map<String, Object> extras) {
-        System.out.println(sheetName+":"+rowIndex+":"+row);
+        System.out.println(sheetName+"-->"+rowIndex+"-->"+row);
     }
 }

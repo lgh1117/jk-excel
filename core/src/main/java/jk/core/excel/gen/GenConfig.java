@@ -82,10 +82,12 @@ public class GenConfig {
         String fileName = outFile.getName();
         fileName = fileName.toLowerCase();
         if(fileName.endsWith(".xls")){
-            this.setIs97excel(false);
-        }else{
             this.setIs97excel(true);
+        }else{
+            this.setIs97excel(false);
         }
+
+        out = new FileOutputStream(outFile);
 
         return this;
     }

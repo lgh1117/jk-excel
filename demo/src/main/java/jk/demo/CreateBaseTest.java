@@ -1,6 +1,9 @@
 package jk.demo;
 
+import org.apache.log4j.BasicConfigurator;
+
 import java.io.File;
+import java.net.URL;
 
 /**
  * @Description
@@ -8,15 +11,22 @@ import java.io.File;
  * @Author Jack.Lee
  */
 public class CreateBaseTest {
+    static {
+        BasicConfigurator.configure();
+    }
     public static File getFile(String filename){
-//        URL url = BaseTest.class.getClassLoader().getResource("xls");
-//        if(url != null){
-            File file = new File("test/xls");
-            if(!file.exists()){
-                file.mkdirs();
-            }
-            return new File(file,filename);
-//        }
-//        throw new RuntimeException("not found file");
+        File file = new File("test/xls");
+        if(!file.exists()){
+            file.mkdirs();
+        }
+        return new File(file,filename);
+    }
+
+    public static File getFileFromClasspath(String filename){
+        URL url = BaseTest.class.getClassLoader().getResource("gen/" +filename);
+        if(url != null){
+            return new File(url.getFile());
+        }
+        return null;
     }
 }

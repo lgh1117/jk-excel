@@ -38,6 +38,12 @@ public abstract class GenAbstract implements GenExcel {
     @Override
     public boolean write() throws ExportException {
         long time = System.currentTimeMillis();
+        if(config.getOut() == null){
+            throw new ExportException("output stream is null ");
+        }
+        if(Utils.isEmptyCollection(config.getSheetConfigs())){
+            throw new ExportException("not found any sheet config info ");
+        }
         try {
             boolean rs = write(config.getOut(), config.getSheetConfigs(), config.getExcelInputStream());
             return rs;
@@ -132,8 +138,7 @@ public abstract class GenAbstract implements GenExcel {
                 maxRow = createSheetData(workbook, sheet, datas, dataColumns, maxRow, sheetConfig);
             }
         } else {
-            maxRow = createSheetData(workbook, sheet, datas, dataColumns,
-                    maxRow, sheetConfig);
+            maxRow = createSheetData(workbook, sheet, datas, dataColumns,maxRow, sheetConfig);
         }
         addPicture(workbook, sheet, sheetConfig, maxRow);
         // sheet.createFreezePane(dataColumns.size() + 10, headers.size());
@@ -149,6 +154,9 @@ public abstract class GenAbstract implements GenExcel {
      */
     private Map<Integer, List<ExpHeader>> getHeaders(SheetConfig sheetConfig) {
         List<ExpHeader> allHeaders = sheetConfig.getHeaders();
+        if(Utils.isEmptyCollection(allHeaders)){
+            throw new ExportException("export excel headers is null or empty");
+        }
         Map<Integer, List<ExpHeader>> headers = new HashMap<Integer, List<ExpHeader>>();
         // 按照列对头部数据进行排序；
         Collections.sort(allHeaders, new Comparator<ExpHeader>() {

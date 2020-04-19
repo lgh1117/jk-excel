@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
+ * 多个行处理器，rowHandler
  * @Description
  * @Version 1.0.0
  * @Author Jack.Lee
@@ -23,6 +24,8 @@ public class MultHanlderTest extends BaseTest {
 
     public static void main(String[] args){
         File file = getFile("common_test.xlsx");
+        parse(file);
+        file = getFile("common_test.xls");
         parse(file);
     }
 
@@ -39,8 +42,6 @@ public class MultHanlderTest extends BaseTest {
         l = System.currentTimeMillis() - l;
         for (Map m : data) {
             System.out.println(m);
-//            System.out.println("--->error info:"+m.get(CellDataHandle.INFO_NAME));
-//            System.out.println("--->row number:"+m.get(CellDataHandle.ROW_NUMBER_NAME));
         }
         System.out.println("all:" + data.size());
         System.out.println("time:" + l);

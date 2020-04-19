@@ -94,7 +94,6 @@
                         </manifest>
                     </archive>
                     <excludes>
-                        <exclude>**/xls/*</exclude>
                         <exclude>log4j.properties</exclude>
                         <exclude>**/test/*</exclude>
                     </excludes>

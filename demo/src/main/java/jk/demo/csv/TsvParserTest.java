@@ -2,6 +2,7 @@ package jk.demo.csv;
 
 import jk.core.Excel;
 import jk.core.ParseFactory;
+import jk.core.csv.CsvConstants;
 import jk.core.excel.parse.base.Mapping;
 import jk.core.excel.parse.base.ParseInfo;
 import jk.demo.BaseTest;
@@ -19,14 +20,14 @@ import java.util.Map;
 public class TsvParserTest extends BaseTest {
 
     public static void main(String[] args){
-        File file = getFile("common_test.csv");
+        File file = getFile("common_test.tsv");
         parse(file);
     }
 
     public static void parse(File file){
         //配置文件，同时指定数据开始行号，从1开始
         ParseInfo info = new ParseInfo(file, 1);
-        info.setCsvSeperator(",");
+        info.setCsvSeperator(CsvConstants.SEP_TAB);
         info.setMappings(getMappings());
         //获取解析器
         Excel excel = ParseFactory.getExcelParse(info);

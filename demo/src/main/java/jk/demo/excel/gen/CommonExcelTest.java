@@ -22,7 +22,7 @@ import java.util.List;
 public class CommonExcelTest extends CreateBaseTest {
 
     public static void main(String[] args) {
-        File file = getFile("CommonExcelTest-large.xlsx");
+        File file = getFile("CommonExcelTest.xlsx");
         createExcel(file);
     }
 

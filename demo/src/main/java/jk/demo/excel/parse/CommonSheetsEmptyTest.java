@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
+ * 一次解析过个sheet，指定需要解析的特定sheet
  * @Description
  * @Version 1.0.0
  * @Author Jack.Lee
@@ -20,8 +21,9 @@ import java.util.Map;
 public class CommonSheetsEmptyTest extends BaseTest {
 
     public static void main(String[] args){
-
-        File file = getFile("common_sheets.xls");
+        File file = getFile("common_sheets_empty.xls");
+        parse(file);
+        file = getFile("common_sheets_empty.xlsx");
         parse(file);
     }
 

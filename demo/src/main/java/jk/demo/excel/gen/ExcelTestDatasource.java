@@ -5,6 +5,7 @@ import jk.core.excel.gen.Datasource;
 import jk.core.excel.gen.SheetConfig;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -18,9 +19,11 @@ public class ExcelTestDatasource implements Datasource {
     private boolean next = true;
     private int index = 0;
     private long tag = 0;
+    private boolean large;
 
-    public ExcelTestDatasource(long tag) {
+    public ExcelTestDatasource(long tag,boolean large) {
         this.tag = tag;
+        this.large = large;
     }
 
     /*
@@ -32,6 +35,10 @@ public class ExcelTestDatasource implements Datasource {
     public List<JSONObject> loadData(SheetConfig config, int rows) {
         List<JSONObject> datas = new ArrayList<JSONObject>();
         int max = index + 800;
+        if(!large && max > 65530){
+            next = false;
+            return Collections.emptyList();
+        }
         for (int j = index; j < max; j++) {
             JSONObject json = new JSONObject();
             for (int i = 0; i <= 17; i++) {

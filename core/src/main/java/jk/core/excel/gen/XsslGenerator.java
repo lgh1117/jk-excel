@@ -54,20 +54,28 @@ public class XsslGenerator extends GenAbstract {
                     createSheet(workbook, sheetConfig);
                 }
             }
+            workbook.write(out);
             return true;
         }catch (Exception ex){
             throw new ExportException(ex.getMessage(),ex);
-        }finally {
-            close();
         }
     }
 
     @Override
     public void close() throws ExportException {
-        try {
-            workbook.close();
-        } catch (Exception e) {
-            throw new ExportException(e.getMessage(), e);
+        if(config.getOut() != null){
+            try {
+                config.getOut().flush();
+            } catch (Exception e) {
+                logger.error(e.getMessage(), e);
+            }
+        }
+        if(workbook != null) {
+            try {
+                workbook.close();
+            } catch (Exception e) {
+                throw new ExportException(e.getMessage(), e);
+            }
         }
         if(inputStream != null ){
             try {
@@ -83,7 +91,6 @@ public class XsslGenerator extends GenAbstract {
             } catch (Exception e) {
                 logger.error(e.getMessage(), e);
             }
-
         }
     }
 
@@ -157,4 +164,8 @@ public class XsslGenerator extends GenAbstract {
         xssfFont.setColor(xc);
     }
 
+    @Override
+    public void flushRows(Sheet sheet) {
+        //nothing todo
+    }
 }

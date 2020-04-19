@@ -16,7 +16,7 @@ public class BaseTest {
     }
 
     public static File getFile(String filename)  {
-        URL url = BaseTest.class.getClassLoader().getResource("xls/"+filename);
+        URL url = BaseTest.class.getClassLoader().getResource("parse/" +filename);
         if(url != null){
             return new File(url.getFile());
         }

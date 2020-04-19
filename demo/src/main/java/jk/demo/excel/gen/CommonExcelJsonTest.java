@@ -41,8 +41,7 @@ public class CommonExcelJsonTest extends CreateBaseTest {
         //产生数据
         List datas = getDatas();
         //设置头部对应关系
-        List<ExpHeader> headers = getHeaders();
-        File headerJson = getFile("parse_test.json");
+        File headerJson = getFileFromClasspath("parse_test.json");
         //设置配置
         SheetConfig config1 = new SheetConfig("这是一个测试", headerJson, datas);
         config1.setDataRowHeight(26);
@@ -64,33 +63,4 @@ public class CommonExcelJsonTest extends CreateBaseTest {
         }
         return datas;
     }
-
-    private static List<ExpHeader> getHeaders() {
-        List<ExpHeader> headers = new ArrayList<ExpHeader>();
-        ExpHeader h1 = null;
-        //字体大小、颜色、行高
-        CellInfo headerCellInfo = new CellInfo();
-        headerCellInfo.setFontHightInPoints(Short.valueOf("16"));
-//        headerCellInfo.setFillColor((short)64);
-        headerCellInfo.setHexColor("19a0ef");
-
-        CellInfo dataCellInfo = new CellInfo();
-        dataCellInfo.setWrapText(true);
-        dataCellInfo.setFillHexColor("ABABAB");
-        dataCellInfo.setHexColor("FF00AA");
-
-//        headerCellInfo.setColor();
-        for (int i = 0 ; i < 10 ; i++){
-            h1 = new ExpHeader("这里是表头"+i, "val"+i, 1, 1, 1, i+1);
-            h1.setAutoWidth(true);
-            h1.setHeadCellInfo(headerCellInfo);
-            if(i == 5){
-                h1.setCellInfo(dataCellInfo);
-            }
-            headers.add(h1);
-        }
-        return headers;
-    }
-
-
 }

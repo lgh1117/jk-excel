@@ -57,6 +57,12 @@ public final class CsvConstants {
 
     public static final char TAB = '\t';
 
+    public static final char SEMICOLON = ';';
+
+    public static final String SEP_TAB = "t";
+    public static final String SEP_COMMA = ",";
+    public static final String SEP_SEMICOLON = ";";
+
     /** Undefined state for the lookahead char */
     public static final int UNDEFINED = -2;
 
@@ -76,6 +82,7 @@ public final class CsvConstants {
             case "|" : return PIPE;
             case " " : return SP;
             case "#" : return COMMENT;
+            case ";" : return SEMICOLON;
             default:return COMMA;
         }
     }

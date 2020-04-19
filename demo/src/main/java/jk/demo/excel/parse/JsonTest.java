@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
+ * 通过配置json映射文件来解析excel
  * @Description
  * @Version 1.0.0
  * @Author Jack.Lee
@@ -18,6 +19,8 @@ public class JsonTest extends BaseTest {
 
     public static void main(String[] args){
         File file = getFile("common_test.xlsx");
+        parse(file);
+        file = getFile("common_test.xls");
         parse(file);
     }
 

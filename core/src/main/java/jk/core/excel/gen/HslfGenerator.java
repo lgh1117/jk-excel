@@ -52,17 +52,24 @@ public class HslfGenerator extends GenAbstract {
             return true;
         }catch (Exception ex){
             throw new ExportException(ex.getMessage(),ex);
-        }finally {
-            close();
         }
     }
 
     @Override
     public void close() throws ExportException {
-        try {
-            workbook.close();
-        } catch (Exception e) {
-            throw new ExportException(e.getMessage(), e);
+        if(config.getOut() != null){
+            try {
+                config.getOut().flush();
+            } catch (Exception e) {
+                logger.error(e.getMessage(), e);
+            }
+        }
+        if(workbook != null) {
+            try {
+                workbook.close();
+            } catch (Exception e) {
+                throw new ExportException(e.getMessage(), e);
+            }
         }
         if(inputStream != null ){
             try {
@@ -243,5 +250,20 @@ public class HslfGenerator extends GenAbstract {
     public void setString(String val, Cell cell) {
         HSSFRichTextString richTextString = new HSSFRichTextString(val);
         cell.setCellValue(richTextString);
+    }
+
+    @Override
+    public void flushRows(Sheet sheet) {
+        //nothing todo
+    }
+
+    @Override
+    public void setXSSFFillColor(CellStyle style, byte[] fillRgbColor) {
+        //nothing todo
+    }
+
+    @Override
+    public void setXSSFFontColor(Font font, byte[] rgbColor) {
+        //nothing todo
     }
 }

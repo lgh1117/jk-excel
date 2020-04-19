@@ -12,6 +12,8 @@ import java.util.List;
 import java.util.Map;
 
 /**
+ * 一次解析多个sheet，所有的sheet都必须有表头映射，否则报错
+ *
  * @Description
  * @Version 1.0.0
  * @Author Jack.Lee
@@ -19,8 +21,9 @@ import java.util.Map;
 public class CommonSheetsTest extends BaseTest {
 
     public static void main(String[] args){
-
         File file = getFile("common_sheets.xls");
+        parse(file);
+        file = getFile("common_sheets.xlsx");
         parse(file);
     }
 
@@ -57,13 +60,13 @@ public class CommonSheetsTest extends BaseTest {
         m = new Mapping("person","age", "年龄");
         list.add(m);
 
-        m = new Mapping("other1","yearother", "年2");
+        m = new Mapping("other","yearother", "年");
         list.add(m);
-        m = new Mapping("other1","monthother", "月份");
+        m = new Mapping("other","monthother", "月份");
         list.add(m);
-        m = new Mapping("other1","nameother", "姓名");
+        m = new Mapping("other","nameother", "姓名");
         list.add(m);
-        m = new Mapping("other1","ageother", "年龄");
+        m = new Mapping("other","ageother", "年龄");
         list.add(m);
         return  list;
     }

@@ -23,9 +23,15 @@ import java.util.concurrent.TimeUnit;
  */
 public class DatasourceExcelTest extends CreateBaseTest {
     public static void main(String[] args){
+        File file = getFile("DatasourceExcelTest.xlsx");
+        create(file,true);
+        file = getFile("DatasourceExcelTest.xls");
+        create(file,false);
+    }
+
+    public static void create(File file,boolean large){
         for(int i = 0 ; i < 2 ; i++) {
-            File file = getFile("DatasourceExcelTest.xlsx");
-            createExcel(file, 0);
+            createExcel(file, 0,large);
             try {
                 TimeUnit.MINUTES.sleep(1);
             } catch (InterruptedException e) {
@@ -35,9 +41,9 @@ public class DatasourceExcelTest extends CreateBaseTest {
         }
     }
 
-    public static void createExcel(File file, long index) {
+    public static void createExcel(File file, long index,boolean large) {
         try {
-            GenConfig config = createConfig(file,index);
+            GenConfig config = createConfig(file,index,large);
             GenExcel gen = GenFactory.createGenerator(config);
             gen.write();
             System.out.println("create end.....");
@@ -47,9 +53,9 @@ public class DatasourceExcelTest extends CreateBaseTest {
         
     }
 
-    private static GenConfig createConfig(File file,long index) throws IOException {
+    private static GenConfig createConfig(File file,long index,boolean large) throws IOException {
         List<ExpHeader> headers = getHeaders();
-        SheetConfig config = new SheetConfig("sheet test", headers,new ExcelTestDatasource(index));
+        SheetConfig config = new SheetConfig("sheet test", headers,new ExcelTestDatasource(index,large));
         List<SheetConfig> configs = new ArrayList<SheetConfig>();
         configs.add(config);
         return GenConfig.builder().setSheetConfigs(configs).setOutFile(file);

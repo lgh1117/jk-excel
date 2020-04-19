@@ -25,6 +25,8 @@ public class NavInfoExcelTest extends CreateBaseTest {
     public static void main(String[] args){
         File file = getFile("excel-nav.xlsx");
         createExcel(file);
+        file = getFile("excel-nav.xls");
+        createExcel(file);
     }
 
     public static void createExcel(File file){

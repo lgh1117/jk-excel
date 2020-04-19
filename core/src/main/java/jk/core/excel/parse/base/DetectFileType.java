@@ -54,6 +54,9 @@ public class DetectFileType {
 	private String getHeader() {
 		byte[] b = new byte[32];
 		InputStream inputStream = null;
+		if(file == null || !file.exists()){
+			throw new ExcelParseException("not found any file or file is not exists");
+		}
 		try {
 			inputStream = new FileInputStream(file);
 			inputStream.read(b, 0, 32);

@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
+ * 普通解析，单元格式化，单元格公式计算等
  * @Description
  * @Version 1.0.0
  * @Author Jack.Lee
@@ -20,17 +21,16 @@ import java.util.Map;
 public class CommonTest extends BaseTest {
 
     public static void main(String[] args){
-
-        File file = getFile("number_test.xlsx");
+        File file = getFile("common_test.xls");
+        parse(file);
+        file = getFile("common_test.xlsx");
         parse(file);
     }
 
     public static void parse(File file){
         //配置文件，同时指定数据开始行号，从1开始
-        ParseInfo info = new ParseInfo(file, 2,true);
+        ParseInfo info = new ParseInfo(file, 3,true);
         info.setMappings(getMappings());
-        //设置需要解析sheet名，不设置，默认为第一个sheet
-//        info.addSheet("other");
         //获取解析器
         Excel excel = ParseFactory.getExcelParse(info);
         long l = System.currentTimeMillis();
@@ -47,13 +47,21 @@ public class CommonTest extends BaseTest {
     //配置映射
     public static List<Mapping> getMappings(){
         List<Mapping> list = new ArrayList<>();
-        Mapping m = new Mapping("cash", "周实际回款(元)1");
+        Mapping m = new Mapping("name", "姓名");
         list.add(m);
-        m = new Mapping("Date", "收集日期2");
+        m = new Mapping("age", "年龄");
         list.add(m);
-        m = new Mapping("company", "公司3");
+        m = new Mapping("height", "身高");
         list.add(m);
-        m = new Mapping("code", "项目编码4");
+        m = new Mapping("weight", "体重");
+        list.add(m);
+        m = new Mapping("income", "收入");
+        list.add(m);
+        m = new Mapping("birthday", "生日");
+        list.add(m);
+        m = new Mapping("entryDate", "入职时间");
+        list.add(m);
+        m = new Mapping("yearAndMonth", "年月");
         list.add(m);
 
         return  list;

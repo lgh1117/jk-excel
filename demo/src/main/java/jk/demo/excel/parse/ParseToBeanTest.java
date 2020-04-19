@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * 解析结果直接转为bean
  * @Description
  * @Version 1.0.0
  * @Author Jack.Lee
@@ -21,6 +22,8 @@ public class ParseToBeanTest extends BaseTest {
 
     public static void main(String[] args){
         File file = getFile("common_test.xlsx");
+        parse(file);
+        file = getFile("common_test.xls");
         parse(file);
     }
 
@@ -52,6 +55,8 @@ public class ParseToBeanTest extends BaseTest {
         m = new Mapping("name", "姓名");
         list.add(m);
         m = new Mapping("age", "年龄");
+        list.add(m);
+        m = new Mapping("birthday", "生日");
         list.add(m);
         return  list;
     }

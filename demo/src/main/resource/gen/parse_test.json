@@ -1,0 +1,21 @@
+[
+  {
+    "name":"名称",
+    "valueName":"name",
+    "col":1,
+    "row":1,
+    "colIndex":0,
+    "rowIndex":0,
+    "colWidth":50,
+    "autoWidth":true
+  },{
+  "name":"年龄",
+  "valueName":"age",
+  "col":1,
+  "row":1,
+  "colIndex":1,
+  "rowIndex":0,
+  "colWidth":50,
+  "autoWidth":true
+}
+]

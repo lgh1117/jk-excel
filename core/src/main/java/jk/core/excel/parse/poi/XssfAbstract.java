@@ -628,7 +628,8 @@ public abstract class XssfAbstract extends DefaultHandler {
 	public List<String> getSheetNames() throws InvalidFormatException,
 			XmlException, IOException {
 		CTSheets sheets = getSheets();
-		int total = sheets.getSheetList().size();
+		List<CTSheet> ctSheetList = sheets.getSheetList();
+		int total = ctSheetList.size();
 		List<String> list = new LinkedList<String>();
 		for (int i = 0; i < total; i++) {
 			CTSheet sheet = sheets.getSheetArray(i);

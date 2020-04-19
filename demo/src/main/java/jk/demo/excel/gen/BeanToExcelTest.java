@@ -25,12 +25,27 @@ public class BeanToExcelTest extends CreateBaseTest {
 
     public static void main(String[] args){
         File file = getFile("BeanToExcelTest.xlsx");
-        createExcel(file);
+        createExcel(file,false);
+        file = getFile("BeanToExcelTest-large.xlsx");
+        createExcel(file,true);
+        file = getFile("BeanToExcelTest-default.xlsx");
+        createExcel(file,null);
+
+        //xls
+        file = getFile("BeanToExcelTest.xls");
+        createExcel(file,false);
+        file = getFile("BeanToExcelTest-large.xls");
+        createExcel(file,true);
+        file = getFile("BeanToExcelTest-default.xls");
+        createExcel(file,null);
     }
 
-    public static void createExcel(File file){
+    public static void createExcel(File file,Boolean large){
         try {
             GenConfig config = createConfig(file);
+            if(large != null){
+                config.setLargeData(large);
+            }
             GenExcel gen = GenFactory.createGenerator(config);
             gen.write();
             System.out.println("create end.....");
@@ -58,7 +73,7 @@ public class BeanToExcelTest extends CreateBaseTest {
         List<Person> datas = new ArrayList<>();
         for(int j = 0 ; j < 100 ; j++) {
             Person d = new Person();
-            d.setAge(((long) (Math.random()*1000000000000l)));
+            d.setAge(((long) (Math.random()*100l)));
             d.setMonth(((int) (Math.random()*11))+1);
             d.setName("name"+j);
             d.setYear(2019);

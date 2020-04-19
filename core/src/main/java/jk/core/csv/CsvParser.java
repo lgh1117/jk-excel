@@ -20,7 +20,7 @@ import java.io.Reader;
 import java.util.*;
 
 /**
- * 解析csv、tsv等文件
+ * 解析csv、tsv等特定格式文件
  *  @author Jack lee
  *  @since 2020.04.15
  */
@@ -168,14 +168,14 @@ public class CsvParser implements Excel {
                 }
 
                 if(headerNotFound.length() > 0){
-                    logger.warn("row["+curRow+"] not found headers:"+headerNotFound);
+                    logger.warn("row[" + curRow + "] not found headers:" + headerNotFound);
                     headerNotFound.delete(0,headerNotFound.length());
                 }
                 curRow++ ;
             }
 
             if(datas.size() == 0){
-                logger.info("parser csv file is not found any data for["+fileName+"]");
+                logger.info("parser csv file is not found any data for[" + fileName + "];onlyParse[" + onlyParse + "]");
             }
 
             if(!onlyParse){

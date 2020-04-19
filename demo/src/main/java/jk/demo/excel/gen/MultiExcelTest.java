@@ -22,6 +22,8 @@ public class MultiExcelTest extends CreateBaseTest {
     public static void main(String[] args){
         File file = getFile("MultiExcelTest.xlsx");
         createExcel(file);
+        file = getFile("MultiExcelTest.xls");
+        createExcel(file);
     }
 
     public static void createExcel(File file){
@@ -33,8 +35,6 @@ public class MultiExcelTest extends CreateBaseTest {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        
-        
     }
 
     private static GenConfig createConfig(File file) throws IOException {

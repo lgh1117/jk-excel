@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
+ * excel解析过程中的，对整个excel的时间监听与传播
  * @Description
  * @Version 1.0.0
  * @Author Jack.Lee
@@ -21,12 +22,9 @@ import java.util.Map;
 public class ParseSheetListenerTest extends BaseTest {
 
     public static void main(String[] args){
-//        File file = getFile("common_sheets.xls");
-//        File file = getFile("common_single.xls");
-//        File file = getFile("common_single_empty.xls");
-//        File file = getFile("common_test_sheets.xlsx");
-        File file = getFile("common_test_single.xlsx");
-//        File file = getFile("common_test_single_empty.xlsx");
+        File file = getFile("common_sheets.xls");
+        parse(file);
+        file = getFile("common_sheets.xlsx");
         parse(file);
     }
 

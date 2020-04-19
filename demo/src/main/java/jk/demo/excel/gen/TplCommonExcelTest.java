@@ -24,16 +24,18 @@ import java.util.Map;
 public class TplCommonExcelTest extends CreateBaseTest {
     public static void main(String[] args){
         File file = getFile("excel-tpl-test.xlsx");
-        File tpl = getFile("excel-tpl.xlsx");
-        createExcel(file,tpl);
+        File tpl = getFileFromClasspath("excel-tpl.xlsx");
+        createExcel(file,tpl,false);
+        file = getFile("excel-tpl-test-large.xlsx");
+        createExcel(file,tpl,true);
         file = getFile("excel-tpl-test.xls");
-        tpl = getFile("excel-tpl.xls");
-        createExcel(file,tpl);
+        tpl = getFileFromClasspath("excel-tpl.xls");
+        createExcel(file,tpl,false);
     }
 
-    public static void createExcel(File file, File tpl){
+    public static void createExcel(File file, File tpl,Boolean large){
         try {
-            GenConfig config = createConfig(file);
+            GenConfig config = createConfig(file,tpl,large);
             GenExcel gen = GenFactory.createGenerator(config);
             gen.write();
             System.out.println("create end.....");
@@ -44,7 +46,8 @@ public class TplCommonExcelTest extends CreateBaseTest {
         
     }
 
-    private static GenConfig createConfig(File file) throws IOException {
+    private static GenConfig createConfig(File file,File tpl,Boolean large) throws IOException {
+        large = large == null ? true : large;
         //产生数据
         List datas = getDatas();
         //设置头部对应关系
@@ -55,7 +58,7 @@ public class TplCommonExcelTest extends CreateBaseTest {
         config.setHeadRowHeight(35);
         List<SheetConfig> configs = new ArrayList<SheetConfig>();
         configs.add(config);
-        return GenConfig.builder().setOutFile(file).setSheetConfigs(configs);
+        return GenConfig.builder().setOutFile(file).setSheetConfigs(configs).setInputTemplate(tpl).setLargeData(large);
     }
 
     private static List<ExpHeader> getExpHeaders() {
