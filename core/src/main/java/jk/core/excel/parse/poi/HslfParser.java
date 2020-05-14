@@ -75,6 +75,11 @@ public class HslfParser extends HslfAbstract implements Excel {
 				//重置头部
 				resetHeader(sheetName);
 			}
+			if(parseInfo.getExtraCellDataHandle() != null){
+				for(int i = 0  ; i < rowList.size() ; i++) {
+					parseInfo.getExtraCellDataHandle().optRows(sheetIndex, sheetName, curRow,i,rowList.get(i),parseInfo.getExtras());
+				}
+			}
 		} else if (parseInfo.getDataIndex() <= curRow) {
 			if(!calParser){
 				return;

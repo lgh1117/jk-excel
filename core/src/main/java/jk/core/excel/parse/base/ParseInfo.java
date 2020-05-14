@@ -6,6 +6,7 @@ import jk.core.excel.parse.event.ParseListener;
 import jk.core.ex.ExcelParseException;
 import jk.core.excel.parse.event.ParseSheetListener;
 import jk.core.hd.CellDataHandle;
+import jk.core.hd.ExtraCellDataHandle;
 import jk.core.hd.RowDataHandle;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang.StringUtils;
@@ -126,6 +127,11 @@ public class ParseInfo implements Serializable {
 	 * 整个文档解析监听器
 	 */
 	private ParseSheetListener parseSheetListener;
+
+	/**
+	 * 除数据列之外的单元格数据处理器
+	 */
+	private ExtraCellDataHandle extraCellDataHandle;
 
 	/**
 	 * @param file
@@ -682,5 +688,13 @@ public class ParseInfo implements Serializable {
 
 	public void setParseUnit(boolean parseUnit) {
 		this.parseUnit = parseUnit;
+	}
+
+	public ExtraCellDataHandle getExtraCellDataHandle() {
+		return extraCellDataHandle;
+	}
+
+	public void setExtraCellDataHandle(ExtraCellDataHandle extraCellDataHandle) {
+		this.extraCellDataHandle = extraCellDataHandle;
 	}
 }

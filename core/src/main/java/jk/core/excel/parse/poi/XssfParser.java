@@ -75,6 +75,11 @@ public class XssfParser extends XssfAbstract implements Excel {
 				//重置头部
 				resetHeader(sheetName);
 			}
+			if(parseInfo.getExtraCellDataHandle() != null){
+				for(int i = 0  ; i < rowList.size() ; i++) {
+					parseInfo.getExtraCellDataHandle().optRows(sheetIndex, sheetName, curRow,i,rowList.get(i),parseInfo.getExtras());
+				}
+			}
 		} else if (parseInfo.getDataIndex() <= curRow) {
 			if(!calParser){
 				//没有解析出头部来，是一个空的sheet
