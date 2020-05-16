@@ -29,8 +29,8 @@ public class CommonTest extends BaseTest {
 
     public static void parse(File file){
         //配置文件，同时指定数据开始行号，从1开始
-        ParseInfo info = new ParseInfo(file, 3,true);
-        info.setMappings(getMappings());
+        ParseInfo info = new ParseInfo(file, getMappings(),3);
+        info.setForceMatcher(true);
         //获取解析器
         Excel excel = ParseFactory.getExcelParse(info);
         long l = System.currentTimeMillis();
