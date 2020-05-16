@@ -36,4 +36,65 @@
 
 ![tpl2](https://github.com/lgh1117/jk-excel/blob/master/static/tpl2.png)
 
-### 文档还在更新中，具体例子可以先看demo里面的代码。。。。。
+### 使用步骤
+#### 一、解析Excel 详细查看[parse excel](https://github.com/lgh1117/jk-excel/blob/master/demo/src/main/java/jk/demo/excel/parse)
+1. 获取文件，后缀为xls、xlsx、csv、tsv
+    文件类型判断，如果不是excel格式文件，使用别的txt文件等重命名过来的，程序会检测为非法文件；
+```java
+File file = new File("test.xls");
+```
+
+2. 设置列头映射代码
+````java
+//配置映射
+    public  List<Mapping> getMappings(){
+        List<Mapping> mappings = new ArrayList<>();
+        Mapping m = new Mapping("name", "姓名");
+        mappings.add(m);
+        m = new Mapping("age", "年龄");
+        mappings.add(m);
+        m = new Mapping("height", "身高");
+        mappings.add(m);
+        m = new Mapping("weight", "体重");
+        mappings.add(m);
+        m = new Mapping("income", "收入");
+        mappings.add(m);
+        m = new Mapping("birthday", "生日");
+        mappings.add(m);
+        m = new Mapping("entryDate", "入职时间");
+        mappings.add(m);
+        m = new Mapping("yearAndMonth", "年月");
+        mappings.add(m);
+
+        return  mappings;
+    }
+````
+
+1. 创建解析信息对象
+````java
+ParseInfo info = new ParseInfo(file, mappings,3);
+//如果强制检查映射是否都存在，则设置参数，默认不检查
+info.setForceMatcher(true);
+````
+
+1. 调用工厂获取解析对象
+````java
+//获取解析器
+Excel excel = ParseFactory.getExcelParse(info);
+````
+
+1.获取解析结果数据
+````java
+List<Map> data = excel.parseToMapList();
+````
+
+##### **注意**：解析支持的功能有如下：
+* 解析每个单元格时，获取解析时的事件，根据自己需要，自行处理，需要配置解析时，在对应的单元格上配置CellHandler类；
+* 映射关系支持json文件配置；
+* 解析时，无需说明文件类型，程序自动识别，支持xls，xlsx，tsv，csv；
+* 解析过程中，对应行事件、头部处理开始事件、头部处理结束事件、文件结束事件；
+* 自动格式化
+* 自动数据封装为目标Class类型
+
+
+
