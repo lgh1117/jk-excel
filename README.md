@@ -85,7 +85,10 @@ Excel excel = ParseFactory.getExcelParse(info);
 
 1.获取解析结果数据
 ````java
+//返回第一个sheet解析的结果，可以指定sheet，在配置ParseInfo时
+//也可以根据需要，调用不同的解析获取解析结果
 List<Map> data = excel.parseToMapList();
+// your's code in here for your biz
 ````
 
 ##### **注意**：解析支持的功能有如下：
