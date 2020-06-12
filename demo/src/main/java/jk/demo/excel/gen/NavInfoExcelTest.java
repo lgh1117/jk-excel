@@ -1,6 +1,5 @@
 package jk.demo.excel.gen;
 
-import com.alibaba.fastjson.JSONObject;
 import jk.core.GenExcel;
 import jk.core.GenFactory;
 import jk.core.excel.cellinfo.CellInfo;
@@ -9,6 +8,7 @@ import jk.core.excel.gen.ExpHeader;
 import jk.core.excel.gen.GenConfig;
 import jk.core.excel.gen.SheetConfig;
 import jk.demo.CreateBaseTest;
+import l.jk.json.JSONObject;
 
 import java.io.File;
 import java.io.IOException;

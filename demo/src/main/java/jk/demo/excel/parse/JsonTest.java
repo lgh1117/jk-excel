@@ -32,9 +32,9 @@ public class JsonTest extends BaseTest {
         Excel excel = ParseFactory.getExcelParse(info);
         long l = System.currentTimeMillis();
         //开始解析数据
-        List<Map> data = excel.parseToMapList();
+        List<Person> data = excel.parseToList(Person.class);
         l = System.currentTimeMillis() - l;
-        for (Map m : data) {
+        for (Person m : data) {
             System.out.println(m);
         }
         System.out.println("all:" + data.size());

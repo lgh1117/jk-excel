@@ -61,13 +61,7 @@
             <version>1.2.17</version>
         </dependency>
 
-        <!--
-                         <dependency>
-                            <groupId>commons-codec</groupId>
-                            <artifactId>commons-codec</artifactId>
-                            <version>1.9</version>
-                        </dependency>
-                  -->
+
         <dependency>
             <groupId>commons-logging</groupId>
             <artifactId>commons-logging</artifactId>
@@ -98,21 +92,13 @@
             <version>2.6</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/com.alibaba/fastjson -->
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>fastjson</artifactId>
-            <version>1.2.59</version>
-        </dependency>
-
-
-        <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind
+        <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-            <version>2.9.9.3</version>
+            <version>2.11.0</version>
         </dependency>
-       -->
+
         <dependency>
             <groupId>jfree</groupId>
             <artifactId>jfreechart</artifactId>

@@ -1,10 +1,10 @@
 package jk.core.excel.parse.base;
 
-import com.alibaba.fastjson.JSONObject;
 import jk.core.ex.ConvertDataException;
 import jk.core.ex.ParseHeaderException;
 import jk.core.util.RegExpUtil;
 import jk.core.util.Utils;
+import l.jk.json.JSONObject;
 import org.apache.log4j.Logger;
 
 import java.lang.reflect.Field;
@@ -232,9 +232,7 @@ public class ParserUtil {
 //						Object val = map.get(key);
 //						setValue(t, proMap.get(key), val);
 //					}
-					JSONObject d = (JSONObject) JSONObject.toJSON(map);
-					T t = JSONObject.toJavaObject(d,c);
-
+					T t = JSONObject.toJavaObject(map,c);
 					list.add(t);
 				}
 			}
