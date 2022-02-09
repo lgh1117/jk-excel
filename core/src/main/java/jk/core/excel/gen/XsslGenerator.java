@@ -4,7 +4,8 @@ import jk.core.ex.ExcelParseException;
 import jk.core.ex.ExportException;
 import jk.core.excel.cellinfo.ExcelInputStream;
 import jk.core.util.Utils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.apache.poi.ss.SpreadsheetVersion;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.ss.util.CellRangeAddressList;
@@ -20,12 +21,12 @@ import java.util.Map;
  * @ClassName XsslGenerator
  * @Description
  * @Version 1.0.0
- * @Author Jack lee
+ * @Author liguohui lgh1177@126.com
  * @Since 2020/4/18 下午10:25
  */
 public class XsslGenerator extends GenAbstract {
 
-    private static final Logger logger = Logger.getLogger(XsslGenerator.class);
+    private static final Logger logger = LogManager.getLogger(XsslGenerator.class);
 
     private GenConfig config ;
     private XSSFWorkbook workbook = null;

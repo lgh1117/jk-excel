@@ -9,7 +9,7 @@ package jk.core.ex;
  * </p>
  * 
  * @file: ConvertDataException.java
- * @author: Jack lee
+ * @author: liguohui lgh1177@126.com
  * @version: v1.0
  */
 public class ConvertDataException extends RuntimeException {

@@ -8,16 +8,20 @@ import jk.core.excel.parse.base.ParseInfo;
 import jk.core.ex.ExcelParseException;
 import jk.core.excel.parse.poi.HslfParser;
 import jk.core.excel.parse.poi.XssfParser;
+import org.apache.commons.lang.StringUtils;
+import org.mozilla.universalchardet.UniversalDetector;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.nio.charset.Charset;
 import java.sql.SQLException;
 
 /**
  * @Description
  * @Version 1.0.0
- * @Author Jack.Lee
+ * @Author liguohui lgh1177@126.com
  */
 public final class ParseFactory {
 
@@ -44,6 +48,13 @@ public final class ParseFactory {
 
 	private static Excel getCsvParse(ParseInfo info) {
 		try {
+			if(StringUtils.isEmpty(info.getCharset()) && info.isAutoDetectorCharset()){
+				String charset = UniversalDetector.detectCharset(new FileInputStream(info.getFile()));
+				info.setCharset(charset);
+			}
+			if(StringUtils.isEmpty(info.getCharset())){
+				info.setCharset(Charset.defaultCharset().name());
+			}
 			if (!info.isInited()) {
 				info.init();
 			}

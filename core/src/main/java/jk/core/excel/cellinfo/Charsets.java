@@ -4,7 +4,7 @@
 package jk.core.excel.cellinfo;
 
 /**
- * @author Jack lee
+ * @author liguohui lgh1177@126.com
  *
  */
 public enum Charsets {

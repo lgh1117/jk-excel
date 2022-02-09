@@ -11,7 +11,7 @@ import java.util.Arrays;
 /**
  * 增强导出的excel的颜色，字体等设置
  *
- * @author Jack lee
+ * @author liguohui lgh1177@126.com
  */
 public class CellInfo {
 

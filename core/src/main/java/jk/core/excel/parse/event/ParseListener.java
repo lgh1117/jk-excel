@@ -8,7 +8,7 @@ import java.util.Map;
 /**
  * 监听每行解决结果，并将相应信息传递给监听器做行处理，配合解析使用；
  *
- * Created by Jack.Lee
+ * @author liguohui lgh1177@126.com
  */
 public interface ParseListener {
     /**

@@ -11,7 +11,7 @@ import java.util.Map;
 /**
  * 处理每行数据，提供两个方法，一个方法是处理原始行数据，从excel解析出来的，
  * 一个方法是处理转换后的行数据
- * @author Jack.Lee
+ * @author liguohui lgh1177@126.com
  */
 public interface RowDataHandle {
 

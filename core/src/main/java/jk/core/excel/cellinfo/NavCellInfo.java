@@ -5,7 +5,7 @@ import jk.core.ex.ExcelParseException;
 
 /**
  * 放到Sheet前面的信息说明，一段文字说明文本,只要col与row都合法了，此栏目自动会生成
- * Created by Jack lee
+ * @author liguohui lgh1177@126.com
  */
 public class NavCellInfo extends CellInfo {
 

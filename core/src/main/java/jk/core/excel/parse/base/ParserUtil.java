@@ -5,7 +5,8 @@ import jk.core.ex.ParseHeaderException;
 import jk.core.util.RegExpUtil;
 import jk.core.util.Utils;
 import l.jk.json.JSONObject;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -23,11 +24,11 @@ import java.util.*;
  * </p>
  * 
  * @file: ExcelUtil.java
- * @author: Jack lee
+ * @author: liguohui lgh1177@126.com
  * @version: v1.0
  */
 public class ParserUtil {
-	public static final Logger logger = Logger.getLogger(ParserUtil.class);
+	public static final Logger logger = LogManager.getLogger(ParserUtil.class);
 
 	public static synchronized void parseHeader(String sheetName, ParseInfo info,
                                                 List<String> list) {

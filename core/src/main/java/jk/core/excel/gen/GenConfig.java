@@ -5,6 +5,7 @@ import jk.core.excel.cellinfo.ExcelInputStream;
 
 import java.io.*;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -12,7 +13,7 @@ import java.util.List;
  * @ClassName GenConfig
  * @Description
  * @Version 1.0.0
- * @Author Jack lee
+ * @Author liguohui lgh1177@126.com
  * @Since 2020/4/18 下午7:17
  */
 public class GenConfig {
@@ -47,6 +48,11 @@ public class GenConfig {
      * 作为模板的文件名
      */
     private File inputTemplate;
+
+    /**
+     * 此处操作是否为csv文件
+     */
+    private boolean csv;
 
     private GenConfig(){}
 
@@ -87,7 +93,7 @@ public class GenConfig {
             this.setIs97excel(false);
         }
 
-        out = new FileOutputStream(outFile);
+        this.out = new FileOutputStream(outFile);
 
         return this;
     }
@@ -147,6 +153,21 @@ public class GenConfig {
         }
         this.excelInputStream = new ExcelInputStream(inputTemplate);
         return this;
+    }
+
+    public void addSheetConfig(SheetConfig sheetConfig) {
+        if(sheetConfigs == null){
+            this.sheetConfigs = new ArrayList<>();
+        }
+        this.sheetConfigs.add(sheetConfig);
+    }
+
+    public boolean isCsv() {
+        return this.csv;
+    }
+
+    public void setCsv(boolean csv){
+        this.csv = csv;
     }
 }
 

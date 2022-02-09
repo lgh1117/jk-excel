@@ -6,6 +6,7 @@ import jk.core.ParseFactory;
 import jk.core.excel.parse.base.Mapping;
 import jk.core.excel.parse.base.ParseInfo;
 import jk.demo.BaseTest;
+import jk.demo.Person;
 
 import java.io.File;
 import java.util.ArrayList;

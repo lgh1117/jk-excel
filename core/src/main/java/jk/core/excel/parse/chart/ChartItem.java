@@ -13,7 +13,7 @@ import java.io.Serializable;
  * </p>
  * 
  * @file: ChartItem.java
- * @author: Jack.Lee
+ * @author: liguohui lgh1177@126.com
  * @version: v1.0
  */
 public class ChartItem implements Serializable {

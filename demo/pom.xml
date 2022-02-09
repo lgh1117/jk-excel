@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>demo</groupId>
     <artifactId>jk-excel-demo</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <packaging>jar</packaging>
     <parent>
         <groupId>excel</groupId>
@@ -35,7 +35,7 @@
         <dependency>
             <groupId>excel</groupId>
             <artifactId>jk-excel-core</artifactId>
-            <version>1.0.0</version>
+            <version>1.0.1</version>
         </dependency>
 
     </dependencies>

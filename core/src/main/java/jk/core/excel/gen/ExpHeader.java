@@ -16,7 +16,7 @@ import java.util.List;
  * </p>
  * 
  * @file: ExcelHeader.java
- * @author: Jack lee
+ * @author: liguohui lgh1177@126.com
  * @version: v1.0
  */
 public class ExpHeader implements Serializable {
@@ -91,6 +91,10 @@ public class ExpHeader implements Serializable {
 	 */
 	private List<String> constraintData = null;
 
+	/**
+	 * 用于csv的位置标记，从0开始
+	 */
+	private int csvIndex;
 
 	public ExpHeader(){}
 
@@ -288,6 +292,14 @@ public class ExpHeader implements Serializable {
 
 	public void setConstraintData(List<String> constraintData) {
 		this.constraintData = constraintData;
+	}
+
+	public int getCsvIndex() {
+		return csvIndex;
+	}
+
+	public void setCsvIndex(int csvIndex) {
+		this.csvIndex = csvIndex;
 	}
 
 	@Override

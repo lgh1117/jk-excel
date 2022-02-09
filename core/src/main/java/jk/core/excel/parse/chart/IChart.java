@@ -13,7 +13,7 @@ import java.io.OutputStream;
  * </p>
  * 
  * @file: IChart.java
- * @author: Jack.Lee
+ * @author: liguohui lgh1177@126.com
  * @version: v1.0
  */
 public interface IChart {

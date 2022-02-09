@@ -10,7 +10,8 @@ import jk.core.hd.ExcelCommonHandle;
 import jk.core.hd.RowDataHandle;
 import jk.core.util.RegExpUtil;
 import jk.core.ex.ExcelParseException;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.xmlbeans.XmlException;
 
@@ -26,11 +27,11 @@ import java.util.*;
  * </p>
  * 
  * @file: XssfParser.java
- * @author: Jask.Lee
+ * @author: liguohui lgh1177@126.com
  * @version: v1.0
  */
 public class XssfParser extends XssfAbstract implements Excel {
-	public static final Logger logger = Logger.getLogger(XssfParser.class);
+	public static final Logger logger = LogManager.getLogger(XssfParser.class);
 
 	private ParseInfo parseInfo;
 

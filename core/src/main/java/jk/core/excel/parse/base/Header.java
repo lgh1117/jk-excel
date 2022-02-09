@@ -8,7 +8,7 @@ import java.util.List;
 
 /**
  * 定义解析excel表头列名称与映射字段关系，以及相关信息
- * @author: Jack Lee
+ * @author: liguohui lgh1177@126.com
  * @version: v1.0
  */
 public class Header {

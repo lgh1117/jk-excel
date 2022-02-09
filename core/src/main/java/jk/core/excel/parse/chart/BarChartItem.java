@@ -12,7 +12,7 @@ import java.util.List;
  * </p>
  * 
  * @file: BarChartItem.java
- * @author: Jack.Lee
+ * @author: liguohui lgh1177@126.com
  * @version: v1.0
  */
 public class BarChartItem implements Serializable {

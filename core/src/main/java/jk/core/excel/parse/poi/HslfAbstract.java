@@ -4,7 +4,8 @@ import jk.core.Excel;
 import jk.core.excel.parse.base.Header;
 import jk.core.excel.parse.event.ParseSheetListener;
 import jk.core.ex.ExcelParseException;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.apache.poi.hssf.eventusermodel.EventWorkbookBuilder.SheetRecordCollectingListener;
 import org.apache.poi.hssf.eventusermodel.*;
 import org.apache.poi.hssf.eventusermodel.dummyrecord.LastCellOfRowDummyRecord;
@@ -30,11 +31,11 @@ import java.util.List;
  * Description: [描述该类概要功能介绍]
  * </p>
  * 
- * @author: Jack.Lee
+ * @author: liguohui lgh1177@126.com
  * @version: v1.0
  */
 public abstract class HslfAbstract  implements HSSFListener {
-	public static final Logger logger = Logger.getLogger(HslfAbstract.class);
+	public static final Logger logger = LogManager.getLogger(HslfAbstract.class);
 
 	private int minColumns;
 

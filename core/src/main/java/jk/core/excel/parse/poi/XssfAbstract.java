@@ -4,7 +4,8 @@ import jk.core.Excel;
 import jk.core.excel.parse.base.Header;
 import jk.core.excel.parse.event.ParseSheetListener;
 import jk.core.ex.ExcelParseException;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.apache.poi.hssf.usermodel.HSSFDataFormatter;
 import org.apache.poi.hssf.usermodel.HSSFDateUtil;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
@@ -40,11 +41,11 @@ import java.util.List;
 /**
  * read and parse the excel 2007 or later
  * 
- * @author Jack.Lee
+ * @author liguohui lgh1177@126.com
  * @since 1.0
  */
 public abstract class XssfAbstract extends DefaultHandler {
-	public static final Logger logger = Logger.getLogger(XssfAbstract.class);
+	public static final Logger logger = LogManager.getLogger(XssfAbstract.class);
 
 	/**
 	 * These are the different kinds of cells we support. We keep track of the

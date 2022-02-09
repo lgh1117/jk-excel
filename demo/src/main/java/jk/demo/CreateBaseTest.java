@@ -1,6 +1,5 @@
 package jk.demo;
 
-import org.apache.log4j.BasicConfigurator;
 
 import java.io.File;
 import java.net.URL;
@@ -11,9 +10,7 @@ import java.net.URL;
  * @Author Jack.Lee
  */
 public class CreateBaseTest {
-    static {
-        BasicConfigurator.configure();
-    }
+
     public static File getFile(String filename){
         File file = new File("test/xls");
         if(!file.exists()){

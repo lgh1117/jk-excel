@@ -4,7 +4,7 @@
 package jk.core.ex;
 
 /**
- * @author Jack lee
+ * @author liguohui lgh1177@126.com
  *
  */
 public class ParseHeaderException extends ExcelParseException {

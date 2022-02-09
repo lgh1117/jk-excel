@@ -3,7 +3,8 @@ package jk.core.hd;
 import jk.core.excel.parse.base.Header;
 import jk.core.excel.parse.base.ParseInfo;
 import jk.core.excel.parse.base.ParseUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.List;
 import java.util.Map;
@@ -11,11 +12,11 @@ import java.util.Map;
 /**
  * @Description
  * @Version 1.0.0
- * @Author Jack.Lee
+ * @Author liguohui lgh1177@126.com
  */
 public class ExcelCommonHandle {
 
-    private static final Logger logger = Logger.getLogger(ExcelCommonHandle.class);
+    private static final Logger logger = LogManager.getLogger(ExcelCommonHandle.class);
 
     /**
      * 只做解析，并把解析结果通知使用者，不做数据结果存储

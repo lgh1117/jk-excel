@@ -8,7 +8,7 @@ import java.util.Map;
 /**
  * 处理每个单元格时，对原始单元格诗句进行操作的处理类
  * 
- * @author: Jack.Lee
+ * @author: liguohui lgh1177@126.com
  * @version: v1.0
  */
 public interface CellDataHandle {

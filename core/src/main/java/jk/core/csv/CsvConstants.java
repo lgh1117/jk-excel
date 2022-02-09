@@ -1,7 +1,7 @@
 package jk.core.csv;
 
 /**
- * @author Jack lee
+ * @author liguohui lgh1177@126.com
  * @since 2020.04.15
  */
 

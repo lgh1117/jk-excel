@@ -9,7 +9,7 @@ import java.io.InputStream;
 import java.net.URL;
 
 /**
- * Created by Jack lee
+ * @author  liguohui lgh1177@126.com
  */
 public class ExcelInputStream {
     private File file;

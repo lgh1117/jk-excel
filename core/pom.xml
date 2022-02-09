@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>excel</groupId>
     <artifactId>jk-excel-core</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <packaging>jar</packaging>
 
     <developers>
@@ -56,9 +56,14 @@
         </dependency>
 
         <dependency>
-            <groupId>log4j</groupId>
-            <artifactId>log4j</artifactId>
-            <version>1.2.17</version>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+            <version>2.17.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>2.17.1</version>
         </dependency>
 
 
@@ -125,6 +130,14 @@
             <artifactId>commons-csv</artifactId>
             <version>1.8</version>
         </dependency>
+
+        <!-- charset detector -->
+        <dependency>
+            <groupId>com.github.albfernandez</groupId>
+            <artifactId>juniversalchardet</artifactId>
+            <version>2.4.0</version>
+        </dependency>
+
     </dependencies>
 
 

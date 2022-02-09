@@ -36,7 +36,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * </p>
  * 
  * @file: ExcelUtil.java
- * @author: Jack lee
+ * @author: liguohui lgh1177@126.com
  * @version: v1.0
  */
 public final class ExcelUtil {

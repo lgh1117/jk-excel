@@ -8,7 +8,7 @@ import java.util.Map;
 /**
  * Excel文件解析过程中的事件通知，sheet开始解析解析、头部解析结束、sheet解析结束三类事件
  * 只有Excel类型会触发此事件，其它文件类型不会触发，如CSV，TSV
- * Created by Jack.Lee
+ * @author liguohui lgh1177@126.com
  */
 public interface ParseSheetListener {
 

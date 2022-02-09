@@ -6,7 +6,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * @author   Jack lee
+ * @author liguohui  lgh1177@126.com
  */
 public final class Units {
     public final static Set<String> UNITS = Collections.synchronizedSet(new HashSet<String>());

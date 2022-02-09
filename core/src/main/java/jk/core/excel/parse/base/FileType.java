@@ -2,7 +2,7 @@ package jk.core.excel.parse.base;
 
 /**
  * 定义文件类型对应的十六进制头部
- * @author: Jack lee
+ * @author: liguohui lgh1177@126.com
  * @version: v1.0
  */
 public enum FileType {

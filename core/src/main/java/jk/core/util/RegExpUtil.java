@@ -13,7 +13,7 @@ import java.util.regex.Pattern;
  * 提供对常用数据的合法性验证，目前能验证的有： email： isEmail 身份证： isIdentity 邮编： isZip 整数：isInt
  * 浮点数：isFloat 数字：isNumber 日期：isDate 手机号码：isMobile 空或者null：isNull
  * 
- * @author Jack.Lee
+ * @author liguohui lgh1177@126.com
  */
 public class RegExpUtil {
 

@@ -18,7 +18,7 @@ import java.io.OutputStream;
  * </p>
  * 
  * @file: AbstractChart.java
- * @author: Jack.Lee
+ * @author: liguohui lgh1177@126.com
  * @version: v1.0
  */
 public abstract class AbstractChart implements IChart {

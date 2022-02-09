@@ -28,7 +28,7 @@ import java.text.NumberFormat;
  * </p>
  * 
  * @file: PieChart.java
- * @author: Jack.Lee
+ * @author: liguohui lgh1177@126.com
  * @version: v1.0
  */
 public class PieChart implements IChart {

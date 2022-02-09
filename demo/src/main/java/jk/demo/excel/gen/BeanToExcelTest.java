@@ -8,7 +8,7 @@ import jk.core.excel.gen.ExpHeader;
 import jk.core.excel.gen.GenConfig;
 import jk.core.excel.gen.SheetConfig;
 import jk.demo.CreateBaseTest;
-import jk.demo.excel.parse.Person;
+import jk.demo.Person;
 
 import java.io.File;
 import java.io.IOException;

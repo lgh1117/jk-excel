@@ -1,6 +1,7 @@
 package jk.demo;
 
-import org.apache.log4j.BasicConfigurator;
+
+import org.apache.logging.log4j.core.config.ConfigurationFactory;
 
 import java.io.File;
 import java.net.URL;
@@ -11,8 +12,9 @@ import java.net.URL;
  * @Author Jack.Lee
  */
 public class BaseTest {
+
     static {
-        BasicConfigurator.configure();
+//        System.setProperty(ConfigurationFactory.CONFIGURATION_FILE_PROPERTY,"log4j2.xml");
     }
 
     public static File getFile(String filename)  {

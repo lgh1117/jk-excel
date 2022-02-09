@@ -5,7 +5,7 @@ import jk.core.ex.ExportException;
 /**
  * @Description
  * @Version 1.0.0
- * @Author Jack.Lee
+ * @Author liguohui lgh1177@126.com
  */
 public interface GenExcel {
 
@@ -15,4 +15,9 @@ public interface GenExcel {
      * @throws ExportException
      */
     boolean write() throws ExportException;
+
+    /**
+     * 关闭所有文件流
+     */
+    void close() throws ExportException;
 }

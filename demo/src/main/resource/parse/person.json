@@ -1,5 +1,5 @@
 {
-"returnClass":"jk.demo.excel.parse.Person",
+"returnClass":"jk.demo.Person",
 "mapping":[
 	{"value":"年","key":"year"},
 	{"value":"月份","key":"month"},

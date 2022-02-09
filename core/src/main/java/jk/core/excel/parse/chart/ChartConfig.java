@@ -15,7 +15,7 @@ import java.util.List;
  * </p>
  * 
  * @file: ChartConfig.java
- * @author: Jack.Lee
+ * @author: liguohui lgh1177@126.com
  * @version: v1.0
  */
 public class ChartConfig implements Serializable {

@@ -6,6 +6,8 @@ import jk.core.ParseFactory;
 import jk.core.excel.parse.base.Mapping;
 import jk.core.excel.parse.base.ParseInfo;
 import jk.demo.BaseTest;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -20,7 +22,10 @@ import java.util.Map;
  */
 public class CommonTest extends BaseTest {
 
+    private static final Logger logger = LogManager.getLogger(CommonTest.class);
+
     public static void main(String[] args){
+        logger.info("start......");
         File file = getFile("common_test.xls");
         parse(file);
         file = getFile("common_test.xlsx");
@@ -38,10 +43,10 @@ public class CommonTest extends BaseTest {
         List<Map> data = excel.parseToMapList();
         l = System.currentTimeMillis() - l;
         for (Map m : data) {
-            System.out.println(m);
+            logger.info(m);
         }
-        System.out.println("all:" + data.size());
-        System.out.println("time:" + l);
+        logger.info("all:" + data.size());
+        logger.info("time:" + l);
     }
 
     //配置映射

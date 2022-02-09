@@ -1,5 +1,8 @@
 package jk.core.ex;
 
+/**
+ * @author liguohui lgh1177@126.com
+ */
 public class ExportException extends RuntimeException {
 
 	/**

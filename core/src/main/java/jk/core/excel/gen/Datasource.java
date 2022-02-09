@@ -8,7 +8,7 @@ import java.util.List;
 
 
 /**
- * @author Jack lee
+ * @author liguohui lgh1177@126.com
  *
  */
 public interface Datasource {

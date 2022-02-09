@@ -4,6 +4,7 @@ import jk.core.excel.cellinfo.NavCellInfo;
 import jk.core.ex.ExcelParseException;
 import l.jk.json.JSONArray;
 import l.jk.json.JSONObject;
+import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang.builder.ToStringBuilder;
 
@@ -21,7 +22,7 @@ import java.util.List;
  * </p>
  * 
  * @file: Config.java
- * @author: Jack lee
+ * @author: liguohui lgh1177@126.com
  * @version: v1.0
  */
 public class SheetConfig implements Serializable {
@@ -76,6 +77,18 @@ public class SheetConfig implements Serializable {
 	 * sheet头部补充信息说明，非必须
 	 */
 	private NavCellInfo navCellInfo;
+
+	/**
+	 * 写出csv时，对csv文件的描述信息
+	 */
+	private CSVFormat csvFormat;
+
+	/**
+	 * 产生一个空的构造函数
+	 */
+	public SheetConfig(){
+
+	}
 
 	/**
 	 * @param sheetName
@@ -314,6 +327,14 @@ public class SheetConfig implements Serializable {
 		} catch (Exception e) {
 			throw new ExcelParseException(e.getMessage()+"--->"+headerConfigFile,e);
 		}
+	}
+
+	public CSVFormat getCsvFormat() {
+		return csvFormat;
+	}
+
+	public void setCsvFormat(CSVFormat csvFormat) {
+		this.csvFormat = csvFormat;
 	}
 
 	@Override

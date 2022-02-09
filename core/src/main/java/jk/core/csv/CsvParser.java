@@ -12,7 +12,8 @@ import jk.core.util.Utils;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.FileReader;
 import java.io.IOException;
@@ -21,11 +22,11 @@ import java.util.*;
 
 /**
  * 解析csv、tsv等特定格式文件
- *  @author Jack lee
+ *  @author liguohui lgh1177@126.com
  *  @since 2020.04.15
  */
 public class CsvParser implements Excel {
-    private static final Logger logger = Logger.getLogger(CsvParser.class);
+    private static final Logger logger = LogManager.getLogger(CsvParser.class);
     private ParseInfo parseInfo;
 
     private Map<String, List<Map>> dataMap;

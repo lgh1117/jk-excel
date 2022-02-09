@@ -8,10 +8,12 @@ import jk.core.hd.ExtraCellDataHandle;
 import jk.core.hd.RowDataHandle;
 import l.jk.json.JSONArray;
 import l.jk.json.JSONObject;
+import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.builder.ToStringBuilder;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.File;
 import java.io.IOException;
@@ -30,11 +32,11 @@ import java.util.Map;
  * </p>
  *
  * @file: ParsInfo.java
- * @author: Jack lee
+ * @author: liguohui lgh1177@126.com
  * @version: v1.0
  */
 public class ParseInfo implements Serializable {
-	public static final Logger logger = Logger.getLogger(ParseInfo.class);
+	public static final Logger logger = LogManager.getLogger(ParseInfo.class);
 
 	/**
 	 *
@@ -44,9 +46,9 @@ public class ParseInfo implements Serializable {
 	public static final String COMMONE_SHEET_NAME = "_common_sheet_name";
 
 	/**
-	 * 数据起始行,从0开始，默认第二行,数据起始行之前的都为头部，需要进行数据匹配
+	 * 数据起始行,从1开始，默认第二行,数据起始行之前的都为头部，需要进行数据匹配
 	 */
-	private int dataIndex = 1;
+	private int dataIndex = 2;
 
 	/***
 	 * excel与表头的映射，如果没有，则从数据行开始解析,返回数据为下标map
@@ -132,6 +134,26 @@ public class ParseInfo implements Serializable {
 	 * 除数据列之外的单元格数据处理器
 	 */
 	private ExtraCellDataHandle extraCellDataHandle;
+
+	/**
+	 * 字符集编码,在解析csv时能用上，默认为系统自带的。
+	 */
+	private String charset;
+	/**
+	 * 自动检测文件字符集编码，默认不开启，如果开启会带来性能问题,如果已经制定charset，则不生效
+	 */
+	private boolean autoDetectorCharset = false;
+
+	/**
+	 * csv解析的时候使用
+	 */
+	private CSVFormat csvFormat;
+
+	/**
+	 * 产生一个午餐构造函数
+	 */
+	public ParseInfo() {
+	}
 
 	/**
 	 * @param file
@@ -696,5 +718,33 @@ public class ParseInfo implements Serializable {
 
 	public void setExtraCellDataHandle(ExtraCellDataHandle extraCellDataHandle) {
 		this.extraCellDataHandle = extraCellDataHandle;
+	}
+
+	/**
+	 * csv解析时，可以用上的字符集编码
+	 * @return
+	 */
+	public String getCharset() {
+		return this.charset;
+	}
+
+	public void setCharset(String charset) {
+		this.charset = charset;
+	}
+
+	public boolean isAutoDetectorCharset() {
+		return autoDetectorCharset;
+	}
+
+	public void setAutoDetectorCharset(boolean autoDetectorCharset) {
+		this.autoDetectorCharset = autoDetectorCharset;
+	}
+
+	public CSVFormat getCsvFormat() {
+		return csvFormat;
+	}
+
+	public void setCsvFormat(CSVFormat csvFormat) {
+		this.csvFormat = csvFormat;
 	}
 }

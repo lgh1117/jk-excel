@@ -8,7 +8,8 @@ import jk.core.excel.cellinfo.ExcelInputStream;
 import jk.core.excel.cellinfo.NavCellInfo;
 import jk.core.excel.parse.base.ParserUtil;
 import jk.core.util.Utils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.ss.util.CellRangeAddress;
 
@@ -23,11 +24,11 @@ import java.util.*;
  * @ClassName GenAbstract
  * @Description
  * @Version 1.0.0
- * @Author Jack lee
+ * @Author liguohui lgh1177@126.com
  */
 public abstract class GenAbstract implements GenExcel {
 
-    private static final Logger logger = Logger.getLogger(GenAbstract.class);
+    private static final Logger logger = LogManager.getLogger(GenAbstract.class);
 
     private GenConfig config;
 
@@ -55,7 +56,6 @@ public abstract class GenAbstract implements GenExcel {
 
     public abstract boolean write(OutputStream out, List<SheetConfig> configs, ExcelInputStream excelInputStream) throws ExportException;
 
-    public abstract void close() throws ExportException;
 
     public void checkColors(List<Short> existIndexs, Map<String,byte[]> changeColors, CellInfo cellInfo) {
         if( cellInfo.getFillColor() > 0){//背景色
