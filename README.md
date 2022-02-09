@@ -91,6 +91,200 @@ List<Map> data = excel.parseToMapList();
 // your's code in here for your biz
 ````
 
+1.Builder的使用例子
+# bean类
+```java
+public class Person {
+    @ExcelProperty(name = "年")
+    private Integer year;
+    @ExcelProperty(name = "月份")
+    private Integer month;
+    @ExcelProperty(name = "年龄")
+    private Long age;
+    @ExcelProperty(name = "姓名")
+    private String name;
+    private Date birthday;
+
+    public Person() {
+    }
+
+    public Person(Integer year, Integer month, Long age, String name, Date birthday) {
+        this.year = year;
+        this.month = month;
+        this.age = age;
+        this.name = name;
+        this.birthday = birthday;
+    }
+
+    public Integer getYear() {
+        return year;
+    }
+
+    public void setYear(Integer year) {
+        this.year = year;
+    }
+
+    public Integer getMonth() {
+        return month;
+    }
+
+    public void setMonth(Integer month) {
+        this.month = month;
+    }
+
+    public Long getAge() {
+        return age;
+    }
+
+    public void setAge(Long age) {
+        this.age = age;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Date getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
+    }
+
+    public String toString(){
+        return ToStringBuilder.reflectionToString(this);
+    }
+}
+```
+# 1). 生成文件demo：
+```java
+    private static List getDatas() \{
+        List<Person> rs = new ArrayList<>();
+        for(int i = 0 ; i < 1000 ; i++){
+            rs.add(new Person((new Random().nextInt(2021)),new Random().nextInt(12),(long)(new Random().nextInt(100)),"name" + i,new Date()));
+        }
+        return rs;
+    }
+    
+    private static void csvDatasource()throws IOException {
+        File file = new File("builder-test-datasource-csv.csv");
+        CreateBuilder.create(Person.class).csvFirstHeader(true).out(file).datasource(new BuilderDatasource()).write().close();
+    }
+
+    private static void csv()throws IOException{
+        File file = new File("builder-test-csv.csv");
+        CreateBuilder.create(Person.class).csvFirstHeader(true).out(file).datas(getDatas()).write().close();
+    }
+
+    private static void testTpl()throws IOException{
+        File file = new File("builder-CreateBuilderTest-tpl.xlsx");
+        File tpl = getFileFromClasspath("excel-tpl.xlsx");
+        CreateBuilder.create(Person.class).sheetName("sheet").startRowIndex(5).template(tpl).out(file).datas(getDatas()).write().close();
+    }
+
+    private static void test() throws IOException {
+        File file = new File("builder-CreateBuilderTest.xlsx");
+        CreateBuilder.create(Person.class).out(file).datas(getDatas()).write().close();
+    }
+
+    private static void testDatasource()throws IOException {
+        File file = new File("builder-CreateBuilderTest-datasource.xlsx");
+        long time = System.currentTimeMillis();
+        CreateBuilder.create(Person.class).out(file).datasource(new BuilderDatasource()).write().close();
+        System.out.println("times: " + (System.currentTimeMillis() - time) + "ms");
+    }
+
+    
+```
+
+# 2）. 解析文件demo
+```java
+public static void testHandleCsv(){
+        File file = getFile("common_test.csv");
+        List<Person> list = ParseBuilder.create(Person.class).dataFile(file).parseToBean();
+        for(Person person : list) {
+            System.out.println(person);
+        }
+    }
+
+
+    public static void testCsv(){
+        File file = getFile("common_test.csv");
+        List<Person> list = ParseBuilder.create(Person.class).beforeParse(new MyExcelBuilderBeforAction()).dataFile(file).parseToBean();
+        for(Person person : list) {
+            System.out.println(person);
+        }
+    }
+
+    private static List<Mapping> getMapping() {
+        List<Mapping> rs =new ArrayList<>();
+        rs.add(new Mapping("name","姓名"));
+        rs.add(new Mapping("age","年龄"));
+        rs.add(new Mapping("year","年"));
+        rs.add(new Mapping("month","月份"));
+        return rs;
+    }
+
+    public static void testNoHeaderCsv(){
+        File file = getFile("common_no_header_test.csv");
+        ParseBuilder builder = ParseBuilder.create().autoDetectorCharset().dataFile(file).mapping(getMappingNoHeader());
+        ParseInfo info = builder.getParseInfo();
+        info.setCsvFirstIsHeader(false);
+        info.setFileType(FileType.TSV);
+        List<Map> list = builder.parseToMapList();
+        for(Map person : list) {
+            System.out.println(person);
+        }
+    }
+    private static List<Mapping> getMappingNoHeader() {
+        List<Mapping> rs =new ArrayList<>();
+        rs.add(new Mapping("column0","column0",0));
+        rs.add(new Mapping("column1","column1",1));
+        rs.add(new Mapping("column2","column2",2));
+        rs.add(new Mapping("column3","column3",3));
+        return rs;
+    }
+
+    private static void testOrderSheet(){
+        File file = getFile("common_sheets.xlsx");
+        String sheetName = "person";
+        List<Map> list = ParseBuilder.create().dataFile(file).mapping(getSheetMappings()).parseAll().get(sheetName);
+        for(Map d : list) {
+            System.out.println(d);
+        }
+    }
+
+    private static List<Mapping> getSheetMappings() {
+        List<Mapping> rs =new ArrayList<>();
+        rs.add(new Mapping("person","name","姓名"));
+        rs.add(new Mapping("person","age","年龄"));
+        rs.add(new Mapping("person","year","年"));
+        rs.add(new Mapping("person","month","月份"));
+        return rs;
+    }
+
+
+    public static void testBean(){
+        File file = getFile("common_sheets.xlsx");
+        List<Person> list = ParseBuilder.create(Person.class).dataIndex(3).dataFile(file).parseToBean();
+        for(Person person : list) {
+            System.out.println(person);
+        }
+    }
+    public static void testMap(){
+        File file = getFile("common_sheets.xlsx");
+        List<Map> rs = ParseBuilder.create().mappingFile(getFile("person.json")).dataFile(file).parseToMapList();
+        for(Map map : rs) {
+            System.out.println(map);
+        }
+    }
+```
+
 ##### **注意**：解析支持的功能有如下：
 * 解析每个单元格时，获取解析时的事件，根据自己需要，自行处理，需要配置解析时，在对应的单元格上配置CellHandler类；
 * 映射关系支持json文件配置；
