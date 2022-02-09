@@ -1,6 +1,9 @@
 # jk-excel
 基于poi，做excel解析，自动识别excel或csv、tsv文件格式，单sheet最大生成百万数据在50秒以内，内存15m左右。
 
+## 优势：
+  *  或许你解析一个Excel、CSV、TSV需要上百行代码，并且性能不佳，不利于维护、读写，使用此组件后，你会发现一行代码就可以解决你的问题，并且可以实现分批获取数据，并生成文件。
+
 [markdown基本语法](https://yinxiang.com/new/hc/articles/%e5%8d%b0%e8%b1%a1%e7%ac%94%e8%ae%b0-markdown-%e5%85%a5%e9%97%a8%e6%8c%87%e5%8d%97/?utm_source=b1&utm_medium=b1&utm_term=bxdv1)
 
 # 详细例子
