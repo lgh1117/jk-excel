@@ -1,7 +1,7 @@
 package jk.core.excel.gen;
 
 import jk.core.excel.cellinfo.CellInfo;
-import org.apache.commons.lang.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.poi.ss.usermodel.CellStyle;
 
 import java.io.Serializable;

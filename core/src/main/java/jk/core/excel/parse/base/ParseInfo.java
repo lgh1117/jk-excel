@@ -10,8 +10,8 @@ import l.jk.json.JSONArray;
 import l.jk.json.JSONObject;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.io.FileUtils;
-import org.apache.commons.lang.StringUtils;
-import org.apache.commons.lang.builder.ToStringBuilder;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -88,9 +88,9 @@ public class ParseInfo implements Serializable {
 
 	/**
 	 * 映射配置文件，如果没有提供映射配置，则可以从文件中进行配置， 文件内容为json格式：
-	 * {'returnClass':"结果封装的类，默认为map",'mapping':[ { 'key':'name',
-	 * 'value':'名称',"handle":"handle full class
-	 * name" },{ 'key':'code', 'value':'编码',"handle":"handle full class name" }
+	 * {"returnClass":"结果封装的类，默认为map","mapping":[ { "key":"name",
+	 * "value":"名称","handle":"handle full class
+	 * name" },{ "key":"code", "value":"编码","handle":"handle full class name" }
 	 * ]}
 	 */
 	private File mappingFile;

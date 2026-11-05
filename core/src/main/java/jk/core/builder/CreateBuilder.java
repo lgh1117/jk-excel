@@ -10,7 +10,7 @@ import jk.core.ex.ExportException;
 import jk.core.excel.cellinfo.ExcelInputStream;
 import jk.core.excel.gen.*;
 import org.apache.commons.csv.CSVFormat;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 
 import java.io.*;
 import java.lang.reflect.Field;

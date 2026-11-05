@@ -7,12 +7,14 @@ import jk.core.ex.ExcelParseException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.poi.hssf.usermodel.HSSFDataFormatter;
-import org.apache.poi.hssf.usermodel.HSSFDateUtil;
+import org.apache.poi.ss.usermodel.DateUtil;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.openxml4j.opc.*;
 import org.apache.poi.ss.usermodel.BuiltinFormats;
 import org.apache.poi.ss.usermodel.DataFormatter;
+import org.apache.poi.ss.usermodel.RichTextString;
 import org.apache.poi.xssf.eventusermodel.XSSFReader;
+import org.apache.poi.xssf.model.SharedStrings;
 import org.apache.poi.xssf.model.SharedStringsTable;
 import org.apache.poi.xssf.model.StylesTable;
 import org.apache.poi.xssf.usermodel.XSSFCellStyle;
@@ -55,14 +57,14 @@ public abstract class XssfAbstract extends DefaultHandler {
 		BOOLEAN, ERROR, FORMULA, INLINE_STRING, SST_STRING, NUMBER,
 	}
 
-	private SharedStringsTable sst;
+	private SharedStrings sst;
 
 	/**
 	 * Table with the styles used for formatting
 	 */
 	private StylesTable stylesTable;
 
-	private SharedStringsTable sharedStringsTable;
+	private SharedStrings sharedStringsTable;
 
 	// Set when V start element is seen
 	private boolean vIsOpen;
@@ -475,9 +477,9 @@ public abstract class XssfAbstract extends DefaultHandler {
 				String sstIndex = value.toString();
 				try {
 					int idx = Integer.parseInt(sstIndex);
-					XSSFRichTextString rtss = new XSSFRichTextString(
-							sharedStringsTable.getEntryAt(idx));
-					thisStr = rtss.toString();
+//					XSSFRichTextString rtss = new XSSFRichTextString(sharedStringsTable.getItemAt(idx));
+					RichTextString rts = sharedStringsTable.getItemAt(idx);
+					thisStr = rts.toString();
 				} catch (NumberFormatException ex) {
 					logger.error("Failed to parse SST index '" + sstIndex
 							+ "': " + ex.getMessage(),ex);
@@ -489,7 +491,7 @@ public abstract class XssfAbstract extends DefaultHandler {
 				n = n == null || "".equals(n.trim()) ? null : n.trim();
 				if (this.formatString != null) {
 					Double d = Double.parseDouble(n);
-					if (HSSFDateUtil.isADateFormat(formatIndex, formatString)) {
+					if (DateUtil.isADateFormat(formatIndex, formatString)) {
 						if (!isTime()) {
 							thisStr = formatter.formatRawCellContents(d,
 									this.formatIndex, this.systemFormatString);

@@ -1,7 +1,6 @@
 package jk.demo;
 
 
-import org.apache.logging.log4j.core.config.ConfigurationFactory;
 
 import java.io.File;
 import java.net.URL;

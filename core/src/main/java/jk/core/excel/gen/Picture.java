@@ -2,7 +2,7 @@ package jk.core.excel.gen;
 
 import jk.core.ex.ExportException;
 import jk.core.excel.parse.chart.IChart;
-import org.apache.commons.lang.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.io.File;
 import java.io.InputStream;

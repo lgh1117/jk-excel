@@ -8,7 +8,7 @@ import jk.core.excel.parse.base.ParseInfo;
 import jk.core.ex.ExcelParseException;
 import jk.core.excel.parse.poi.HslfParser;
 import jk.core.excel.parse.poi.XssfParser;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.mozilla.universalchardet.UniversalDetector;
 
 import java.io.File;

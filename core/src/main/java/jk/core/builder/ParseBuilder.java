@@ -9,7 +9,7 @@ import jk.core.excel.parse.base.ParseInfo;
 import jk.core.hd.CellDataHandle;
 import jk.core.hd.RowDataHandle;
 import org.apache.commons.csv.CSVFormat;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 
 import java.io.File;
 import java.lang.reflect.Field;

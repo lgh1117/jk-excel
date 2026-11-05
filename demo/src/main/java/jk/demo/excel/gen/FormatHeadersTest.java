@@ -9,7 +9,6 @@ import jk.core.excel.gen.ExpHeader;
 import jk.core.excel.gen.GenConfig;
 import jk.core.excel.gen.SheetConfig;
 import jk.demo.CreateBaseTest;
-import org.apache.commons.math3.analysis.function.Exp;
 
 import java.io.File;
 import java.io.IOException;

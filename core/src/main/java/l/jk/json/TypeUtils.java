@@ -52,7 +52,7 @@ public class TypeUtils {
             }
             return Byte.parseByte(strVal);
         }
-        throw new JSONException("can not cast to byte, value : " + value);
+        throw new JSONException("can not cast to byte" + JSONUtils.detail(null, value));
     }
 
     public static Character castToChar(Object value){
@@ -68,11 +68,11 @@ public class TypeUtils {
                 return null;
             }
             if(strVal.length() != 1){
-                throw new JSONException("can not cast to char, value : " + value);
+                throw new JSONException("can not cast to char" + JSONUtils.detail(null, value));
             }
             return strVal.charAt(0);
         }
-        throw new JSONException("can not cast to char, value : " + value);
+        throw new JSONException("can not cast to char" + JSONUtils.detail(null, value));
     }
 
     public static Short castToShort(Object value){
@@ -98,7 +98,7 @@ public class TypeUtils {
             return Short.parseShort(strVal);
         }
 
-        throw new JSONException("can not cast to short, value : " + value);
+        throw new JSONException("can not cast to short" + JSONUtils.detail(null, value));
     }
 
     public static BigDecimal castToBigDecimal(Object value){
@@ -117,6 +117,9 @@ public class TypeUtils {
         }
         if(value instanceof Map && ((Map) value).size() == 0){
             return null;
+        }
+        if(strVal.length() > JSONUtils.MAX_NUMBER_LENGTH){
+            throw new JSONException("can not cast to BigDecimal" + JSONUtils.detail(null, strVal));
         }
         return new BigDecimal(strVal);
     }
@@ -144,6 +147,9 @@ public class TypeUtils {
                 || "NULL".equals(strVal)){
             return null;
         }
+        if(strVal.length() > JSONUtils.MAX_NUMBER_LENGTH){
+            throw new JSONException("can not cast to BigInteger" + JSONUtils.detail(null, strVal));
+        }
         return new BigInteger(strVal);
     }
 
@@ -166,7 +172,7 @@ public class TypeUtils {
             }
             return Float.parseFloat(strVal);
         }
-        throw new JSONException("can not cast to float, value : " + value);
+        throw new JSONException("can not cast to float" + JSONUtils.detail(null, value));
     }
 
     public static Double castToDouble(Object value){
@@ -188,7 +194,7 @@ public class TypeUtils {
             }
             return Double.parseDouble(strVal);
         }
-        throw new JSONException("can not cast to double, value : " + value);
+        throw new JSONException("can not cast to double" + JSONUtils.detail(null, value));
     }
 
     public static Date castToDate(Object value){
@@ -249,7 +255,7 @@ public class TypeUtils {
                 try{
                     return dateFormat.parse(strVal);
                 } catch(ParseException e){
-                    throw new JSONException("can not cast to Date, value : " + strVal);
+                    throw new JSONException("can not cast to Date" + JSONUtils.detail(null, strVal));
                 }
             }
             if(strVal.length() == 0){
@@ -297,7 +303,7 @@ public class TypeUtils {
                 return (Date) result;
             }
 
-            throw new JSONException("can not cast to Date, value : " + value);
+            throw new JSONException("can not cast to Date" + JSONUtils.detail(null, value));
         }
 
         return new Date(longValue);
@@ -339,7 +345,7 @@ public class TypeUtils {
             }
         }
         if(longValue <= 0){
-            throw new JSONException("can not cast to Date, value : " + value); // TODO 忽略 1970-01-01 之前的时间处理？
+            throw new JSONException("can not cast to Date" + JSONUtils.detail(null, value)); // TODO 忽略 1970-01-01 之前的时间处理？
         }
         return new java.sql.Date(longValue);
     }
@@ -387,7 +393,7 @@ public class TypeUtils {
             }
         }
         if(longValue <= 0){
-            throw new JSONException("can not cast to Date, value : " + value); // TODO 忽略 1970-01-01 之前的时间处理？
+            throw new JSONException("can not cast to Date" + JSONUtils.detail(null, value)); // TODO 忽略 1970-01-01 之前的时间处理？
         }
         return new java.sql.Time(longValue);
     }
@@ -431,7 +437,7 @@ public class TypeUtils {
             }
         }
         if(longValue <= 0){
-            throw new JSONException("can not cast to Timestamp, value : " + value);
+            throw new JSONException("can not cast to Timestamp" + JSONUtils.detail(null, value));
         }
         return new java.sql.Timestamp(longValue);
     }
@@ -494,7 +500,7 @@ public class TypeUtils {
             }
         }
 
-        throw new JSONException("can not cast to long, value : " + value);
+        throw new JSONException("can not cast to long" + JSONUtils.detail(null, value));
     }
 
     public static byte byteValue(BigDecimal decimal) {
@@ -593,7 +599,7 @@ public class TypeUtils {
                 return castToInt(value2);
             }
         }
-        throw new JSONException("can not cast to int, value : " + value);
+        throw new JSONException("can not cast to int" + JSONUtils.detail(null, value));
     }
 
     public static byte[] castToBytes(Object value){
@@ -601,9 +607,13 @@ public class TypeUtils {
             return (byte[]) value;
         }
         if(value instanceof String){
-            return Base64.getDecoder().decode((String) value);
+            String strVal = (String) value;
+            if(strVal.length() > JSONUtils.MAX_STRING_LENGTH){
+                throw new JSONException("can not cast to bytes" + JSONUtils.detail(null, strVal));
+            }
+            return Base64.getDecoder().decode(strVal);
         }
-        throw new JSONException("can not cast to int, value : " + value);
+        throw new JSONException("can not cast to bytes" + JSONUtils.detail(null, value));
     }
 
     public static Boolean castToBoolean(Object value){
@@ -646,7 +656,7 @@ public class TypeUtils {
                 return Boolean.FALSE;
             }
         }
-        throw new JSONException("can not cast to boolean, value : " + value);
+        throw new JSONException("can not cast to boolean" + JSONUtils.detail(null, value));
     }
 
 

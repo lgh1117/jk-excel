@@ -21,7 +21,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <poi.version>4.0.0</poi.version>
+        <poi.version>5.5.1</poi.version>
     </properties>
     <repositories>
         <repository>
@@ -35,9 +35,13 @@
         <dependency>
             <groupId>excel</groupId>
             <artifactId>jk-excel-core</artifactId>
-            <version>1.0.1</version>
+            <version>1.0.2</version>
         </dependency>
-
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.21.0</version>
+        </dependency>
     </dependencies>
 
 
@@ -131,8 +135,8 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
+                    <source>17</source>
+                    <target>17</target>
                 </configuration>
             </plugin>
         </plugins>

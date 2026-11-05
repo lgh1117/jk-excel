@@ -149,8 +149,15 @@ public class JSONArray implements List<Object>, Cloneable, RandomAccess, Seriali
             list.add(element);
             return null;
         }
+        if (index < -1) {
+            throw new JSONException("set failed, index=" + index);
+        }
 
         if (list.size() <= index) {
+            int gap = index - list.size();
+            if (gap > JSONUtils.MAX_ARRAY_GAP) {
+                throw new JSONException("set failed, index=" + index + ", size=" + list.size());
+            }
             for (int i = list.size(); i < index; ++i) {
                 list.add(null);
             }
